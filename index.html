@@ -3,39 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Sharona ❤️</title>
+    <title>Something Special for Sharona ❤️</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Satisfy&display=swap" rel="stylesheet">
     <style>
         :root { --p: #f3e5f5; --accent: #9575cd; --txt: #4a148c; }
-        * { box-sizing: border-box; }
         body { margin: 0; background: var(--p); font-family: 'Poppins', sans-serif; color: var(--txt); overflow-x: hidden; }
-        
-        /* Layout Sections */
         section { min-height: 100vh; display: none; padding: 40px 20px; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         .active { display: flex; animation: slideUp 0.6s ease-out; }
-        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-
+        @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .card { background: white; padding: 30px; border-radius: 30px; box-shadow: 0 15px 35px rgba(149, 117, 205, 0.2); max-width: 500px; width: 100%; border: 2px solid #e1bee7; }
-        h1 { font-family: 'Satisfy', cursive; font-size: 2.5rem; margin-bottom: 20px; }
-        .btn { background: var(--accent); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; margin-top: 25px; transition: 0.3s; box-shadow: 0 5px 15px rgba(149, 117, 205, 0.4); }
-
+        .btn { background: var(--accent); color: white; border: none; padding: 15px 35px; border-radius: 50px; font-size: 1.1rem; cursor: pointer; margin-top: 25px; transition: 0.3s; }
+        
         /* Memory Game */
         .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 20px 0; }
         .tile { width: 75px; height: 75px; background: #d1c4e9; border-radius: 12px; cursor: pointer; position: relative; transform-style: preserve-3d; transition: 0.5s; }
         .tile.flipped { transform: rotateY(180deg); }
         .tile img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; position: absolute; backface-visibility: hidden; transform: rotateY(180deg); }
 
-        /* Polaroid Section */
+        /* Polaroid Section (Video Style) */
         .polaroid-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 30px; }
-        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); transform: rotate(-3deg); width: 150px; }
+        .polaroid { background: white; padding: 10px 10px 30px 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 150px; }
         .polaroid img { width: 100%; height: 150px; object-fit: cover; }
-        .polaroid:nth-child(even) { transform: rotate(4deg); }
 
-        /* Why You Matter */
+        /* Reasons Grid (Video Style) */
         .reason-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-        .reason-card { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; }
-        .reason-card img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; margin-bottom: 5px; }
-        .reason-card h4 { margin: 5px 0; font-size: 0.9rem; }
+        .reason-card { background: #fff; padding: 15px; border-radius: 15px; border: 1px solid #eee; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -44,58 +36,55 @@
         <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zic3c1bmJxdW90YnhscHlqZndqZ3V5bm5xbXFxdW90YnhscHlqZndqZ3V5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c76IJLufpNUMo/giphy.gif" width="120">
         <h2>Something Special ✨</h2>
         <p>is being prepared for Sharona...</p>
-        <button class="btn" onclick="go(2)">Let's Begin ❤️</button>
+        <button class="btn" onclick="go(2)">See what I have made ❤️</button>
     </section>
 
     <section id="s2">
+        <h1>A little fun break... 🧩</h1>
+        <p>Match the pairs to continue!</p>
+        <div class="grid" id="grid"></div>
+        <button id="nextBtn" class="btn" style="display:none" onclick="go(3)">Next →</button>
+    </section>
+
+    <section id="s3">
+        <h1>The kind that matter... ☁️</h1>
+        <div class="polaroid-grid">
+            <div class="polaroid"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXN6ZHZiaHpxZnJ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/ICOgUN7SjnN28/giphy.gif"><p>Us? 🥹</p></div>
+            <div class="polaroid"><img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXN6ZHZiaHpxZnJ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6bmZ6JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/vFKqnCdLPNOKc/giphy.gif"><p>Just because 🌸</p></div>
+        </div>
+        <button class="btn" onclick="go(4)">Continue →</button>
+    </section>
+
+    <section id="s4">
+        <h1>Why You Matter ❤️</h1>
+        <div class="reason-grid">
+            <div class="reason-card">🌸<br><b>Kind Nature</b><br>Truly genuine.</div>
+            <div class="reason-card">✨<br><b>Calm Presence</b><br>Peaceful vibes.</div>
+            <div class="reason-card">🎧<br><b>You Listen</b><br>You really care.</div>
+            <div class="reason-card">🌟<br><b>Just You</b><br>Simply perfect.</div>
+        </div>
+        <button class="btn" onclick="go(5)">Wait, one more thing... →</button>
+    </section>
+
+    <section id="s5">
         <h1>I want you.. ❤️</h1>
         <div class="card">
-            <p style="text-align: left; line-height: 1.6;">
+            <p style="text-align: left; line-height: 1.6; font-size: 0.95rem;">
                 I want you in my life in the real way. Not to use you or play with your feelings. 
                 I want you because I truly care. I want to make you feel happy, loved, and important. <br><br>
                 I want you to feel safe with me, knowing you are not alone. 
                 I want to stand with you in every good and bad moment. 
                 I don't want something temporary. I want you forever, not just for a little time.. ❤️
             </p>
-            <button class="btn" onclick="go(3)">Keep Going →</button>
+            <button class="btn" onclick="go(6)">The Grand Finale →</button>
         </div>
-    </section>
-
-    <section id="s3">
-        <h1>Memory Match 🧩</h1>
-        <p>Match our memories to move forward!</p>
-        <div class="grid" id="grid"></div>
-        <button id="nextBtn" class="btn" style="display:none" onclick="go(4)">Done! Next →</button>
-    </section>
-
-    <section id="s4">
-        <h1>Some random thoughts ☁️</h1>
-        <div class="polaroid-grid">
-            <div class="polaroid"><img src="thought1.jpg"><p>Us? 🥹</p></div>
-            <div class="polaroid"><img src="thought2.jpg"><p>Pretty 🌸</p></div>
-            <div class="polaroid"><img src="thought3.jpg"><p>Always ✨</p></div>
-        </div>
-        <button class="btn" onclick="go(5)">Click for more →</button>
-    </section>
-
-    <section id="s5">
-        <h1>Why You Matter ❤️</h1>
-        <div class="reason-grid">
-            <div class="reason-card"><img src="reason1.jpg"><h4>Genuine Heart</h4></div>
-            <div class="reason-card"><img src="reason2.jpg"><h4>Calm Presence</h4></div>
-            <div class="reason-card"><img src="reason3.jpg"><h4>Kind Nature</h4></div>
-            <div class="reason-card"><img src="reason4.jpg"><h4>You Listen</h4></div>
-            <div class="reason-card"><img src="reason5.jpg"><h4>Soft Strength</h4></div>
-            <div class="reason-card"><img src="reason6.jpg"><h4>Just You</h4></div>
-        </div>
-        <button class="btn" onclick="go(6)">The Finale →</button>
     </section>
 
     <section id="s6">
         <div class="card">
-            <h1>Final Thought ❤️</h1>
+            <h1 style="font-family:'Satisfy'">One Last Thought ❤️</h1>
             <p>Sharona, will you be my Valentine? 💍</p>
-            <div style="position:relative; height: 80px;">
+            <div style="position:relative; height: 100px;">
                 <button class="btn" onclick="go(7)">Yes!</button>
                 <button class="btn" id="no" style="position:absolute; background:#888;">No</button>
             </div>
@@ -106,7 +95,7 @@
         <h1>I Love You Sharona! ❤️🚀</h1>
         <div class="card">
             <img src="success.jpg" width="100%" style="border-radius:20px;">
-            <p>You've made me the happiest person! ✨</p>
+            <p>You've made me the happiest person ever! ✨</p>
         </div>
     </section>
 
@@ -116,11 +105,9 @@
             document.getElementById('s'+id).classList.add('active');
         }
 
-        // Memory Game
         const images = ['match1.jpg','match2.jpg','match3.jpg','match4.jpg','match5.jpg','match6.jpg'];
         let cards = [...images, ...images].sort(() => 0.5 - Math.random());
-        let selected = [];
-        let matched = 0;
+        let selected = []; let matched = 0;
         const grid = document.getElementById('grid');
 
         cards.forEach(src => {
@@ -143,7 +130,6 @@
             grid.appendChild(tile);
         });
 
-        // No Button
         const no = document.getElementById('no');
         no.addEventListener('mouseover', () => {
             no.style.left = Math.random() * 80 + '%';
