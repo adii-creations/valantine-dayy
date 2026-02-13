@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Something Special For You ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffdae0; /* Pinkish background like the demo */
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            flex-direction: column;
+        }
+
+        /* Floating Hearts Animation Background */
+        .hearts-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(214, 51, 132, 0.2);
+            border: 2px solid #ff4d6d;
+            max-width: 400px;
+            z-index: 10;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Photo Gallery Style */
+        .photo-frame {
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            border: 4px white solid;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* Initially hidden for slideshow */
+        }
+
+        .photo-frame img.active {
+            display: block;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 60px;
+            position: relative;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #noBtn {
+            background-color: #f8f9fa;
+            color: #333;
+            position: absolute;
+        }
+
+        /* Success Screen */
+        #success {
+            display: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-bg" id="hearts-bg"></div>
+
+    <div class="container" id="main-content">
+        <h1>Mazh baal 🥹, Will you be my Valentine? ❤️</h1>
+        
+        <div class="photo-frame">
+            <img src="photo1.jpg" class="active" id="img1">
+            <img src="photo2.jpg" id="img2">
+            <img src="photo3.jpg" id="img3">
+        </div>
+
+        <div class="buttons">
+            <button class="btn" id="yesBtn" onclick="celebrate()">Yes!</button>
+            <button class="btn" id="noBtn">No</button>
+        </div>
+    </div>
+
+    <div class="container" id="success">
+        <h1>I knew it! Love you Mazh baal! ❤️🚀</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Zic3c1bmJxdW90YnhscHlqZndqZ3V5bm5xbXFxdW90YnhscHlqZndqZ3V5JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/l41lH4ADRtAYnGsLe/giphy.gif" width="100%">
+    </div>
+
+    <script>
+        // Photo Slideshow Logic
+        let currentImg = 1;
+        setInterval(() => {
+            document.getElementById(`img${currentImg}`).classList.remove('active');
+            currentImg = (currentImg % 3) + 1;
+            document.getElementById(`img${currentImg}`).classList.add('active');
+        }, 2000);
+
+        // No Button Moving Logic
+        const noBtn = document.getElementById('noBtn');
+        noBtn.addEventListener('mouseover', () => {
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+            noBtn.style.position = 'fixed';
+        });
+
+        // Yes Button Logic
+        function celebrate() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+            document.body.style.backgroundColor = '#ffc0cb';
+        }
+
+        // Background Hearts Generation
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.getElementById('hearts-bg').appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
